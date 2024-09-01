@@ -37,5 +37,15 @@ Ensure you have the following installed on your machine:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/flutter-shopping-cart.git
-   cd flutter-shopping-cart
+   https://github.com/andrewchuev/river_shop.git
+   cd river_shop
+
+2. **Install dependencies:**
+
+      ```bash
+   flutter pub get
+
+3. **Run the app:**
+
+   ```bash
+   flutter run
