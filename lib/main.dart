@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'modules/product/product_module.dart';
 
-
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }

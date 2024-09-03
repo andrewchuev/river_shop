@@ -15,10 +15,8 @@ class ProductFilterWidget extends ConsumerWidget {
         DropdownMenuItem(value: 'all', child: Text('All Categories')),
         DropdownMenuItem(value: 'electronics', child: Text('Electronics')),
         DropdownMenuItem(value: 'jewelery', child: Text('Jewelery')),
-        DropdownMenuItem(
-            value: 'men\'s clothing', child: Text('Men\'s Clothing')),
-        DropdownMenuItem(
-            value: 'women\'s clothing', child: Text('Women\'s Clothing')),
+        DropdownMenuItem(value: 'men\'s clothing', child: Text('Men\'s Clothing')),
+        DropdownMenuItem(value: 'women\'s clothing', child: Text('Women\'s Clothing')),
       ],
       onChanged: (value) {
         if (value != null) {
