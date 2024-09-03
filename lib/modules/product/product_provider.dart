@@ -4,13 +4,13 @@ import 'dart:convert';
 import 'product_model.dart';
 
 final productProvider = FutureProvider<List<Product>>((ref) async {
-  final response =
-      await http.get(Uri.parse('https://fakestoreapi.com/products'));
+  final response = await http.get(Uri.parse('https://fakestoreapi.com/products'));
 
   if (response.statusCode == 200) {
     final List<dynamic> data = json.decode(response.body);
     return data.map((json) => Product.fromJson(json)).toList();
   } else {
+    print(response.body);
     throw Exception('Failed to load products');
   }
 });
