@@ -11,6 +11,7 @@ final productProvider = FutureProvider<List<Product>>((ref) async {
     final List<dynamic> data = json.decode(response.body);
     return data.map((json) => Product.fromJson(json)).toList();
   } else {
+    print(response.body);
     throw Exception('Failed to load products');
   }
 });
