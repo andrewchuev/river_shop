@@ -1,31 +1,40 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:collection/collection.dart';
+import '../product/list/product_list_provider.dart';
+import 'cart_item.dart';
 
-import '../product/product_model.dart';
-
-final cartProvider = StateNotifierProvider<CartNotifier, List<Product>>((ref) {
+// Провайдер для хранения списка товаров в корзине
+final cartProvider = StateNotifierProvider<CartNotifier, List<CartItem>>((ref) {
   return CartNotifier();
 });
 
-class CartNotifier extends StateNotifier<List<Product>> {
+class CartNotifier extends StateNotifier<List<CartItem>> {
   CartNotifier() : super([]);
 
+  // Добавить товар в корзину
   void addToCart(Product product) {
-    state = [
-      for (final item in state)
-        if (item.id == product.id)
-          item.copyWith(quantity: item.quantity + 1)
-        else
-          item,
-      if (!state.any((item) => item.id == product.id))
-        product.copyWith(quantity: 1),
-    ];
+    final cartItem = state.firstWhereOrNull((item) => item.product.id == product.id);
+    if (cartItem != null) {
+      cartItem.quantity += 1;
+      state = [...state];
+    } else {
+      state = [...state, CartItem(product: product)];
+    }
   }
 
+  // Удалить товар из корзины
   void removeFromCart(Product product) {
-    state = state.where((item) => item.id != product.id).toList();
+    final cartItem = state.firstWhereOrNull((item) => item.product.id == product.id);
+    if (cartItem != null && cartItem.quantity > 1) {
+      cartItem.quantity -= 1;
+      state = [...state];
+    } else {
+      state = state.where((item) => item.product.id != product.id).toList();
+    }
   }
 
-  double get total {
-    return state.fold(0, (sum, item) => sum + item.price * item.quantity);
+  // Очистить корзину
+  void clearCart() {
+    state = [];
   }
 }
