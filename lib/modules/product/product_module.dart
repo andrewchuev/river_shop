@@ -64,13 +64,22 @@ class ProductModule extends ConsumerWidget {
       body: Column(
         children: [
           const ProductSearchWidget(),
-          const ProductFilterWidget(),
-          const ProductSortWidget(),
-          IconButton(
-              onPressed: () {
-                ref.read(productFilterProvider.notifier).state = 'all';
-              },
-              icon: Icon(Icons.clear_all)),
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const ProductFilterWidget(),
+                const SizedBox(width: 5),
+                const ProductSortWidget(),
+                IconButton(
+                  onPressed: () {
+                    ref.read(productFilterProvider.notifier).state = 'all';
+                  },
+                  icon: Icon(Icons.clear),
+                ),
+              ],
+            ),
+          ),
           const Expanded(child: ProductListWidget()),
         ],
       ),
