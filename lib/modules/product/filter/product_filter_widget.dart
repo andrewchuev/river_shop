@@ -9,16 +9,16 @@ class ProductFilterWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final filter = ref.watch(productFilterProvider);
 
-    return DropdownButton<String>(
-      value: filter,
-      items: const [
-        DropdownMenuItem(value: 'all', child: Text('All Categories')),
-        DropdownMenuItem(value: 'electronics', child: Text('Electronics')),
-        DropdownMenuItem(value: 'jewelery', child: Text('Jewelery')),
-        DropdownMenuItem(value: 'men\'s clothing', child: Text('Men\'s Clothing')),
-        DropdownMenuItem(value: 'women\'s clothing', child: Text('Women\'s Clothing')),
+    return DropdownMenu<String>(
+      initialSelection: filter,
+      dropdownMenuEntries: const [
+        DropdownMenuEntry(value: 'all', label: 'All Categories'),
+        DropdownMenuEntry(value: 'electronics', label: 'Electronics'),
+        DropdownMenuEntry(value: 'jewelery', label: 'Jewelery'),
+        DropdownMenuEntry(value: 'men\'s clothing', label: 'Men\'s Clothing'),
+        DropdownMenuEntry(value: 'women\'s clothing', label: 'Women\'s Clothing'),
       ],
-      onChanged: (value) {
+      onSelected: (value) {
         if (value != null) {
           ref.read(productFilterProvider.notifier).state = value;
         }

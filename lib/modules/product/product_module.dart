@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:river_shop/modules/product/sort/product_sort_widget.dart';
+import 'filter/product_filter_provider.dart';
 import 'list/product_list_widget.dart';
 import 'filter/product_filter_widget.dart';
 import 'search/product_search_widget.dart';
@@ -61,11 +62,16 @@ class ProductModule extends ConsumerWidget {
         ],
       ),
       body: Column(
-        children: const [
-          ProductSearchWidget(),
-          ProductFilterWidget(),
-          ProductSortWidget(),
-          Expanded(child: ProductListWidget()),
+        children: [
+          const ProductSearchWidget(),
+          const ProductFilterWidget(),
+          const ProductSortWidget(),
+          IconButton(
+              onPressed: () {
+                ref.read(productFilterProvider.notifier).state = 'all';
+              },
+              icon: Icon(Icons.clear_all)),
+          const Expanded(child: ProductListWidget()),
         ],
       ),
     );

@@ -9,31 +9,31 @@ class ProductSortWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final sortCriteria = ref.watch(productSortProvider);
 
-    return DropdownButton<ProductSortCriteria>(
-      value: sortCriteria,
-      items: const [
-        DropdownMenuItem(
+    return DropdownMenu<ProductSortCriteria>(
+      initialSelection: sortCriteria,
+      dropdownMenuEntries: const [
+        DropdownMenuEntry(
           value: ProductSortCriteria.none,
-          child: Text('No Sorting'),
+          label: 'No Sorting',
         ),
-        DropdownMenuItem(
+        DropdownMenuEntry(
           value: ProductSortCriteria.priceAsc,
-          child: Text('Sort by Price: Low to High'),
+          label: 'Sort by Price: Low to High',
         ),
-        DropdownMenuItem(
+        DropdownMenuEntry(
           value: ProductSortCriteria.priceDesc,
-          child: Text('Sort by Price: High to Low'),
+          label: 'Sort by Price: High to Low',
         ),
-        DropdownMenuItem(
+        DropdownMenuEntry(
           value: ProductSortCriteria.nameAsc,
-          child: Text('Sort by Name: A to Z'),
+          label: 'Sort by Name: A to Z',
         ),
-        DropdownMenuItem(
+        DropdownMenuEntry(
           value: ProductSortCriteria.nameDesc,
-          child: Text('Sort by Name: Z to A'),
+          label: 'Sort by Name: Z to A',
         ),
       ],
-      onChanged: (value) {
+      onSelected: (value) {
         if (value != null) {
           ref.read(productSortProvider.notifier).state = value;
         }
