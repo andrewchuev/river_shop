@@ -77,7 +77,7 @@ class CartWidget extends ConsumerWidget {
             // Обработка оплаты или очистка корзины
             ref.read(cartProvider.notifier).clearCart();
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Thank you for your purchase!')),
+              const SnackBar(content: Text('Thank you for your purchase!'), duration: Duration(milliseconds: 300),),
             );
           },
           child: const Text('Checkout'),

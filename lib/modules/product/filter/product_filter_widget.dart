@@ -10,7 +10,7 @@ class ProductFilterWidget extends ConsumerWidget {
     final filter = ref.watch(productFilterProvider);
 
     return DropdownMenu<String>(
-      width: 180.0,
+      width: 150.0,
       initialSelection: filter,
       dropdownMenuEntries: const [
         DropdownMenuEntry(value: 'all', label: 'All Categories'),

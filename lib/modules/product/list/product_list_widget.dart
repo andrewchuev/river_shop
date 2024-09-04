@@ -11,6 +11,8 @@ class ProductListWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final filteredProductList = ref.watch(filteredProductListProvider);
 
+    print('filteredProductList = ' + filteredProductList.toString());
+
     return filteredProductList.isEmpty
         ? const Center(child: Text('No products found'))
         : ListView.builder(
@@ -39,7 +41,7 @@ class ProductListWidget extends ConsumerWidget {
             onPressed: () {
               ref.read(cartProvider.notifier).addToCart(product);
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Product added to cart!')),
+                const SnackBar(content: Text('Product added to cart!'), duration: Duration(milliseconds: 300),),
               );
             },
           ),

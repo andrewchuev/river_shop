@@ -29,6 +29,7 @@ class Product {
 
 final productListProvider = FutureProvider<List<Product>>((ref) async {
   final response = await http.get(Uri.parse('https://fakestoreapi.com/products'));
+  //final response = await http.get(Uri.parse('https://api.escuelajs.co/api/v1/products'));
 
   if (response.statusCode == 200) {
     final List<dynamic> productListJson = jsonDecode(response.body);

@@ -67,6 +67,7 @@ class ProductModule extends ConsumerWidget {
           Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 const ProductFilterWidget(),
                 const SizedBox(width: 5),
@@ -80,6 +81,7 @@ class ProductModule extends ConsumerWidget {
               ],
             ),
           ),
+          SizedBox(height: 10),
           const Expanded(child: ProductListWidget()),
         ],
       ),

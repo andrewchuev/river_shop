@@ -10,7 +10,7 @@ class ProductSortWidget extends ConsumerWidget {
     final sortCriteria = ref.watch(productSortProvider);
 
     return DropdownMenu<ProductSortCriteria>(
-      width: 200.0,
+      width: 150.0,
       initialSelection: sortCriteria,
       dropdownMenuEntries: const [
         DropdownMenuEntry(
